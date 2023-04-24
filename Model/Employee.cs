@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MsTest.Model
+﻿namespace MsTest.Model
 {
     public class Employee
     {
@@ -11,16 +7,6 @@ namespace MsTest.Model
         public string LastName { get; set; }
         public DateTime HireDate { get; set; }
         public Department Department { get; set; }
-        public List<Location> Locations { get; set; }
-
         public decimal Salary { get; set; }
-    }
-
-    public class Location
-    {
-        public string City { get; set; }
-        public string State { get; set; }
-        public string ZipCode { get; set; }
-
     }
 }

@@ -7,11 +7,15 @@ namespace MsTest.Services.Interfaces
     {
         public (string status, Employee? employee) GetById(int id);
         public IEnumerable<Employee> GetAll();
+
+        public Employee Add(Employee employee);
+        public Employee Update(Employee employee);
+        public void Delete(int employeeId);
+
         public (string status, decimal averageValue) GetAverageSalaryByDeparmentName(string name);
 
         public (string status, IEnumerable<DepartmentCount> departmentCount) GetEmployeeCountByDepartment();
 
-        public (string status, IEnumerable<Location> departmentLocations) GetDepartmentLocations(string name);
         public Task<IEnumerable<Product>> GetProductByCategory(string categoryName);
     }
 }

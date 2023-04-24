@@ -46,24 +46,11 @@ namespace MsTest.Services.Services
         {
             var department = _employeeRepository.AllEmployees().GroupBy(x => x.Department.Name)
                 .Select(x => new DepartmentCount { DepartmentName = x.Key, EmployeeCount = x.Count() });
-            if (department != null && department.Count() > 0)
+            if (department != null && department.Any())
             {
                 return ("Success", department);
             }
             return ("Departments Not found", null);
-        }
-
-        public (string status, IEnumerable<Location> departmentLocations) GetDepartmentLocations(string name)
-        {
-            var DepartmentLocations = _employeeRepository.AllEmployees().Where(x => x.Department.Name.ToLower() == name.ToLower())
-                .Select(x => x)
-                .SelectMany(y => y.Locations).Distinct();
-
-            if (DepartmentLocations != null)
-            {
-                return ("Success", DepartmentLocations);
-            }
-            return ("Department Not found", null);
         }
 
         public async Task<IEnumerable<Product>> GetProductByCategory(string categoryName)
@@ -76,6 +63,23 @@ namespace MsTest.Services.Services
             return result;
         }
 
+        public Employee Add(Employee employee)
+        {
+            return _employeeRepository.AddEmployee(employee);
+        }
 
+        public Employee Update(Employee employee)
+        {
+            return _employeeRepository.Update(employee);
+        }
+
+        public void Delete(int employeeId)
+        {
+            var employee = _employeeRepository.AllEmployees().Where(x=> x.Id == employeeId).FirstOrDefault();
+            if(employee != null)
+            {
+                _employeeRepository.Delete(employee);
+            }
+        }
     }
 }

@@ -16,7 +16,7 @@ namespace Services.Test.EmployeeService
         }
 
         [TestMethod]
-        public void GetAll_No_Records()
+        public void GetAll_Return_No_Records()
         {
             //Arrange
             _employeeRepository.Setup( x=> x.AllEmployees()).Returns(new List<Employee>());

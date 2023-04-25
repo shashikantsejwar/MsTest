@@ -20,8 +20,9 @@ namespace MsTest.Controllers
         [HttpGet]
         public IActionResult GetAllEmployees()
         {
-            var result = _employeeService.GetAll();
-            return Ok(result);
+            var (status, employee) = _employeeService.GetAll();
+            if (status == "Success") return Ok(employee);
+            else return BadRequest(status);
         }
 
         [HttpGet("{empId}")]

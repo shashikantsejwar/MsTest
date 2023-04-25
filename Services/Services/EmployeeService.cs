@@ -27,9 +27,17 @@ namespace MsTest.Services.Services
             return ("Success", employee);
         }
 
-        public IEnumerable<Employee> GetAll()
+        public (string status, IEnumerable<Employee> employees) GetAll()
         {
-            return _employeeRepository.AllEmployees();
+            var employees = _employeeRepository.AllEmployees();
+            if (employees.Any())
+            {
+                return ("Success", employees);
+            }
+            else
+            {
+                return ("No Employees Exist", employees);
+            }
         }
 
         public (string status, decimal averageValue) GetAverageSalaryByDeparmentName(string name)
@@ -75,8 +83,8 @@ namespace MsTest.Services.Services
 
         public void Delete(int employeeId)
         {
-            var employee = _employeeRepository.AllEmployees().Where(x=> x.Id == employeeId).FirstOrDefault();
-            if(employee != null)
+            var employee = _employeeRepository.AllEmployees().Where(x => x.Id == employeeId).FirstOrDefault();
+            if (employee != null)
             {
                 _employeeRepository.Delete(employee);
             }

@@ -6,7 +6,7 @@ namespace MsTest.Services.Interfaces
     public interface IEmployeeService
     {
         public (string status, Employee? employee) GetById(int id);
-        public IEnumerable<Employee> GetAll();
+        public (string status, IEnumerable<Employee> employees) GetAll();
 
         public Employee Add(Employee employee);
         public Employee Update(Employee employee);

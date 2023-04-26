@@ -71,9 +71,17 @@ namespace MsTest.Services.Services
             return result;
         }
 
-        public Employee Add(Employee employee)
+        public (string status, Employee employee) Add(Employee employee)
         {
-            return _employeeRepository.AddEmployee(employee);
+            if(_employeeRepository.AllEmployees().Any(x=> x.Id == employee.Id))
+            {
+                return ("Employee Already Exists", employee);
+            }
+            else
+            {
+                _employeeRepository.AddEmployee(employee);
+                return ("Success", employee);
+            }
         }
 
         public Employee Update(Employee employee)

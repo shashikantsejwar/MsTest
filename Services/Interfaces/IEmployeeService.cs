@@ -8,7 +8,7 @@ namespace MsTest.Services.Interfaces
         public (string status, Employee? employee) GetById(int id);
         public (string status, IEnumerable<Employee> employees) GetAll();
 
-        public Employee Add(Employee employee);
+        public (string status, Employee employee) Add(Employee employee);
         public Employee Update(Employee employee);
         public void Delete(int employeeId);
 

@@ -26,7 +26,7 @@ namespace MsTest.Controllers
         }
 
         [HttpGet("{empId}")]
-        public IActionResult GetAllEmployeeById(int empId)
+        public IActionResult GetEmployeeById(int empId)
         {
             var (status, employee) = _employeeService.GetById(empId);
             if (status == "Success") return Ok(employee);
@@ -36,8 +36,9 @@ namespace MsTest.Controllers
         [HttpPost]
         public IActionResult AddEmployee(Employee employee)
         {
-            var result = _employeeService.Add(employee);
-            return Ok(result); 
+            var (status, savedEmployee) = _employeeService.Add(employee);
+            if (status == "Success") return Ok(savedEmployee);
+            else return BadRequest(status);
         }
 
         [HttpPut]

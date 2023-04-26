@@ -38,7 +38,7 @@ namespace Services.Test.EmployeeService
                 new Employee { Id = 5, FirstName ="Manoj", LastName = "Tiwari", Salary = 200000, Department = Hr,  HireDate = DateTime.Now.AddDays(-12)},
                 new Employee { Id = 6, FirstName ="Doug", LastName = "Johns", Salary = 125000, Department = Sales,  HireDate = DateTime.Now.AddMonths(-7)},
                 new Employee { Id = 7, FirstName ="Scott", LastName = "Clark", Salary = 100000, Department = Sales,  HireDate = DateTime.Now.AddDays(-5)},
-                new Employee { Id = 9, FirstName ="Michael", LastName = "Clark", Salary = 100000, Department = Marketing,  HireDate = DateTime.Now.AddMonths(-9)},
+                new Employee { Id = 8, FirstName ="Michael", LastName = "Clark", Salary = 100000, Department = Marketing,  HireDate = DateTime.Now.AddMonths(-9)},
                 new Employee { Id = 9, FirstName ="Johnson", LastName = "Doe", Salary = 100000, Department = Marketing,  HireDate = DateTime.Now.AddDays(-15)}
             };
         }
